@@ -78,7 +78,7 @@ export default function Login() {
         <div className="bg-linear-to-r from-[#381124] to-[#89254d] flex items-center justify-center p-10">
 
           <img
-            src="/image/adopt1.avif"
+            src="/image/doglog.png"
             className="max-h-112.5 object-contain"
           />
 

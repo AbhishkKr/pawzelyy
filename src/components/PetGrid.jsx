@@ -11,7 +11,8 @@ const pets = [
 export default function PetGrid() {
   return (
     <section id="pets" className="px-10 py-20 bg-secondary">
-      <h3 className="mb-10 text-3xl font-bold">
+
+      <h3 className="mb-10 text-3xl font-bold text-center">
         2k+ Pets Available for Adoption Near You
       </h3>
 
@@ -20,6 +21,7 @@ export default function PetGrid() {
           <PetCard key={pet.name} {...pet} />
         ))}
       </div>
+
     </section>
   );
 }
