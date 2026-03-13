@@ -1,7 +1,7 @@
 // src/components/Hero.jsx
 export default function Hero() {
   return (
-    <section className="mt-20 md:mt-24 mx-4 md:mx-10 rounded-3xl shadow-xl bg-gradient-to-r from-[#381124] to-[#89254d] px-6 py-12 md:p-16 text-white">
+    <section className="mt-20 md:mt-24 mx-4 md:mx-10 rounded-3xl shadow-xl bg-linear-to-r from-[#381124] to-[#89254d] px-6 py-12 md:p-16 text-white">
 
       <div className="flex flex-col md:flex-row items-center gap-10">
 
