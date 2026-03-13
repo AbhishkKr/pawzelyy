@@ -82,7 +82,7 @@ export default function Footer() {
 
       {/* Bottom line */}
       <div className="border-t border-gray-800 mt-16 pt-6 text-center text-sm">
-        © 2019. All rights reserved by Rafayel Hasan
+        © 2026. All rights reserved by Pawzely by Abhishek Ranjan.
       </div>
 
     </footer>

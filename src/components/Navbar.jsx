@@ -1,67 +1,54 @@
-// src/components/Navbar.jsx
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-6 md:px-10 py-6">
+    <nav className="fixed top-0 left-0 w-full z-50
+    backdrop-blur-lg bg-white/70 border-b border-white/20
+    flex items-center justify-between px-6 md:px-10 py-4">
 
       {/* Logo */}
-      <div className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2 hover:scale-105 transition">
         <img
           src="/image/paw.jpg"
           alt="paw"
           className="w-8 h-8 rounded-full object-cover"
         />
         <h1 className="text-xl font-bold">Pawzely</h1>
-      </div>
+      </Link>
 
       {/* Navigation */}
       <ul className="hidden md:flex items-center gap-8">
-
         <li>
-          <a
-            href="#pets"
-            className="text-gray-600 hover:text-black transition font-medium"
-          >
+          <a href="#pets" className="text-gray-700 hover:text-black transition">
             Find a Pet
           </a>
         </li>
 
         <li>
-          <Link
-            to="/shop"
-            className="text-gray-600 hover:text-black transition font-medium"
-          >
+          <Link to="/shop" className="text-gray-700 hover:text-black transition">
             Shop
           </Link>
         </li>
 
         <li>
-          <a
-            href="#about"
-            className="text-gray-600 hover:text-black transition font-medium"
-          >
+          <a href="#about" className="text-gray-700 hover:text-black transition">
             About Adoption
           </a>
         </li>
-
       </ul>
 
-      {/* Actions */}
-      <div className="flex gap-4 text-gray-600">
-
-        {/* Navigate to signup page */}
-        <Link
-          to="/signup"
-          className="text-sm hover:text-black transition"
-        >
+      {/* Auth */}
+      <div className="flex gap-4">
+        <Link to="/signup" className="text-gray-700 hover:text-black">
           Sign Up
         </Link>
 
-        <Link to="/login" className="text-sm hover:text-black transition">
+        <Link
+          to="/login"
+          className="bg-[#381124] text-white px-4 py-2 rounded-lg hover:opacity-90"
+        >
           Log In
         </Link>
-
       </div>
 
     </nav>

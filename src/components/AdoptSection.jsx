@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AdoptSection() {
   return (
     <section id="about" className="px-10 py-20 bg-white">
@@ -39,9 +41,12 @@ export default function AdoptSection() {
             Whether labeled on a dog bandana.
           </p>
 
-          <button className="mt-6 text-purple-700 font-semibold flex items-center gap-2 hover:gap-4 transition-all">
+          <Link
+            to="/how-it-works"
+            className="mt-6 text-purple-700 font-semibold flex items-center gap-2 hover:gap-4 transition-all"
+          >
             HOW IT WORKS →
-          </button>
+          </Link>
 
         </div>
 
