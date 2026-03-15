@@ -1,7 +1,10 @@
 @import "tailwindcss";
+
 html {
   scroll-behavior: smooth;
 }
+
+/* floating dog animation */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -17,23 +20,25 @@ html {
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
+
+/* paw trail */
 .paw-trail {
   position: absolute;
   width: 20px;
   height: 20px;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  opacity: 0.8;
-  animation: pawFade 0.7s ease-out forwards;
+  opacity: 0.85;
+  animation: pawFade 0.8s ease-out forwards;
 }
 
+/* paw fade animation */
 @keyframes pawFade {
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -70%) scale(0.5);
+    transform: scale(0.6) translateY(-10px);
     opacity: 0;
   }
 }

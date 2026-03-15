@@ -1,53 +1,159 @@
 import { FaFacebookF, FaTwitter, FaDribbble } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-gray-400 rounded-t-[60px] px-16 py-20">
+    <footer className="bg-black text-gray-400 rounded-t-[60px] px-8 md:px-16 py-20">
 
       <div className="grid md:grid-cols-4 gap-12">
 
         {/* Column 1 */}
         <div>
-          <h3 className="text-white font-semibold mb-4">ABOUT PETFINDER</h3>
+          <h3 className="text-white font-semibold mb-4">ABOUT PAWZELY</h3>
+
           <ul className="space-y-2">
-            <li>About Petfinder</li>
-            <li>FAQs</li>
-            <li>Partnerships</li>
-            <li>Terms of Service</li>
-            <li>Mobile Site & Apps</li>
-            <li>Put Petfinder On Your Site</li>
-            <li>Press</li>
-            <li>Contact Us</li>
+
+            <li>
+              <Link to="/about" className="hover:text-white transition">
+                About Pawzely
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/faq" className="hover:text-white transition">
+                FAQs
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/partnerships" className="hover:text-white transition">
+                Partnerships
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/terms" className="hover:text-white transition">
+                Terms of Service
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/apps" className="hover:text-white transition">
+                Mobile Site & Apps
+              </Link>
+            </li>
+
+
+            <li>
+              <Link to="/contact" className="hover:text-white transition">
+                Contact Us
+              </Link>
+            </li>
+
           </ul>
         </div>
 
         {/* Column 2 */}
         <div>
           <h3 className="text-white font-semibold mb-4">PET ADOPTION</h3>
+
           <ul className="space-y-2">
-            <li>Dog Adoption</li>
-            <li>Cat Adoption</li>
-            <li>Other Pet Adoption</li>
-            <li>Search Adoption Organizations</li>
-            <li>Pet-Adoption Stories</li>
-            <li>Local Adoption Events</li>
-            <li>Shelters & Rescues</li>
+
+            <li>
+              <Link to="/dog-adoption" className="hover:text-white transition">
+                Dog Adoption
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/cat-adoption" className="hover:text-white transition">
+                Cat Adoption
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/other-adoption" className="hover:text-white transition">
+                Other Pet Adoption
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/organizations" className="hover:text-white transition">
+                Search Adoption Organizations
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/stories" className="hover:text-white transition">
+                Pet-Adoption Stories
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/events" className="hover:text-white transition">
+                Local Adoption Events
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/rescues" className="hover:text-white transition">
+                Shelters & Rescues
+              </Link>
+            </li>
+
           </ul>
         </div>
 
         {/* Column 3 */}
         <div>
-          <h3 className="text-white font-semibold mb-4">PET CARE TOPICS</h3>
-          <ul className="space-y-2">
-            <li>Dog Care</li>
-            <li>Dog Breeds</li>
-            <li>Cat Care</li>
-            <li>Cat Breeds</li>
-            <li>All Pet Care</li>
-            <li>Pet Care Videos</li>
-            <li>Helping Pets</li>
-          </ul>
-        </div>
+  <h3 className="text-white font-semibold mb-4">PET CARE TOPICS</h3>
+
+  <ul className="space-y-2">
+
+    <li>
+      <Link to="/dog-care" className="hover:text-white transition">
+        Dog Care
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/dog-breeds" className="hover:text-white transition">
+        Dog Breeds
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/cat-care" className="hover:text-white transition">
+        Cat Care
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/cat-breeds" className="hover:text-white transition">
+        Cat Breeds
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/all-pet-care" className="hover:text-white transition">
+        All Pet Care
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/pet-care-videos" className="hover:text-white transition">
+        Pet Care Videos
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/helping-pets" className="hover:text-white transition">
+        Helping Pets
+      </Link>
+    </li>
+
+  </ul>
+</div>
 
         {/* Column 4 */}
         <div>
@@ -55,32 +161,34 @@ export default function Footer() {
 
           <p className="mb-6 text-sm">
             To get the latest on pet adoption and pet care,
-            sign up for newsletter.
+            sign up for our newsletter.
           </p>
 
           <button className="border border-white px-6 py-2 rounded-full text-white hover:bg-white hover:text-black transition">
             SIGN UP
           </button>
 
-          {/* Social icons */}
+          {/* Social Icons */}
           <div className="flex gap-4 mt-6">
-            <div className="bg-gray-700 p-3 rounded-full">
+
+            <a href="#" className="bg-gray-700 p-3 rounded-full hover:bg-gray-600 transition">
               <FaFacebookF />
-            </div>
+            </a>
 
-            <div className="bg-gray-700 p-3 rounded-full">
+            <a href="#" className="bg-gray-700 p-3 rounded-full hover:bg-gray-600 transition">
               <FaTwitter />
-            </div>
+            </a>
 
-            <div className="bg-gray-700 p-3 rounded-full">
+            <a href="#" className="bg-gray-700 p-3 rounded-full hover:bg-gray-600 transition">
               <FaDribbble />
-            </div>
+            </a>
+
           </div>
         </div>
 
       </div>
 
-      {/* Bottom line */}
+      {/* Bottom */}
       <div className="border-t border-gray-800 mt-16 pt-6 text-center text-sm">
         © 2026. All rights reserved by Pawzely by Abhishek Ranjan.
       </div>
