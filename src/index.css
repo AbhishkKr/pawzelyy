@@ -42,3 +42,39 @@ html {
     opacity: 0;
   }
 }
+
+/* hide scrollbar for carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* carousel gradient edges (optional premium effect) */
+.carousel-fade {
+  position: relative;
+}
+
+.carousel-fade::before,
+.carousel-fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-fade::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.carousel-fade::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}

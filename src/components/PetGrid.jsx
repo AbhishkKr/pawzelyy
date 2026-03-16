@@ -1,42 +1,42 @@
 // src/components/PetGrid.jsx
+
 import { useEffect, useRef } from "react";
 import PetCard from "./PetCard";
-
-const pets = [
-  { name: "Tessie", image: "/image/cat1.avif" },
-  { name: "Onyx", image: "/image/dog1.avif" },
-  { name: "Tabbies female", image: "/image/cat2.avif" },
-  { name: "Chanel", image: "/image/dog2.avif" },
-  { name: "Jojo", image: "/image/jojo.avif" },
-  { name: "Choji", image: "/image/chojii.avif" },
-  { name: "Pusha", image: "/image/pushaa.avif" },
-  { name: "Minna", image: "/image/minnaaa.avif" },
-];
+import { pets } from "../data/pets";
+import { Link } from "react-router-dom";
 
 export default function PetGrid() {
-
   const scrollRef = useRef(null);
+  const animationRef = useRef(null);
+
+  const scroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    container.scrollLeft += 1.5; // scroll speed
+
+    const halfWidth = container.scrollWidth / 2;
+
+    if (container.scrollLeft >= halfWidth) {
+      container.scrollLeft = 0;
+    }
+
+    animationRef.current = requestAnimationFrame(scroll);
+  };
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
+    const container = scrollRef.current;
+    if (!container) return;
 
-    const scroll = setInterval(() => {
-      if (scrollContainer) {
+    // start from middle for seamless loop
+    container.scrollLeft = container.scrollWidth / 2;
 
-        scrollContainer.scrollLeft += 1;
+    animationRef.current = requestAnimationFrame(scroll);
 
-        // reset scroll when end reached
-        if (
-          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-          scrollContainer.scrollWidth
-        ) {
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-    }, 20);
-
-    return () => clearInterval(scroll);
+    return () => cancelAnimationFrame(animationRef.current);
   }, []);
+
+  const loopPets = [...pets, ...pets];
 
   return (
     <section id="pets" className="px-10 py-20 bg-secondary">
@@ -47,19 +47,30 @@ export default function PetGrid() {
           2k+ Pets Available for Adoption Near You
         </h3>
 
-        <button className="text-[#381124] font-semibold hover:underline">
+        <Link
+          to="/pets"
+          className="text-[#381124] font-semibold hover:underline"
+        >
           See More →
-        </button>
+        </Link>
       </div>
 
-      {/* Scrollable Cards */}
+      {/* Scroll container */}
       <div
         ref={scrollRef}
-        className="flex gap-8 overflow-x-auto pb-4"
+        className="flex gap-8 overflow-x-auto pb-4 scrollbar-hide"
+        onMouseEnter={() => cancelAnimationFrame(animationRef.current)}
+        onMouseLeave={() =>
+          (animationRef.current = requestAnimationFrame(scroll))
+        }
       >
-        {pets.map((pet) => (
-          <div key={pet.name} className="min-w-65">
-            <PetCard {...pet} />
+        {loopPets.map((pet, index) => (
+          <div key={index} className="min-w-65">
+            <PetCard
+              name={pet.name}
+              image={pet.image}
+              href={`/pet/${pet.id}`}
+            />
           </div>
         ))}
       </div>

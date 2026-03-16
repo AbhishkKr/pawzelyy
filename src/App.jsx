@@ -26,6 +26,8 @@ import CatBreeds from "./pages/CatBreeds";
 import AllPetCare from "./pages/AllPetCare";
 import PetCareVideos from "./pages/PetCareVideos";
 import HelpingPets from "./pages/HelpingPets";
+import AllPets from "./pages/AllPets";
+import PetShop from "./pages/PetShop";
 
 export default function App() {
   return (
@@ -59,6 +61,9 @@ export default function App() {
         <Route path="/all-pet-care" element={<AllPetCare />} />
         <Route path="/pet-care-videos" element={<PetCareVideos />} />
         <Route path="/helping-pets" element={<HelpingPets />} />
+        <Route path="/pets" element={<AllPets />} />
+        <Route path="/shop-products" element={<PetShop />} />
+        
         
         
         

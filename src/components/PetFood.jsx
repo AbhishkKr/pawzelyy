@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function PetFood() {
   const foods = [
@@ -6,10 +7,14 @@ export default function PetFood() {
     { name: "Veterinary Diet", image: "/image/food2.avif" },
     { name: "Cat Litter", image: "/image/food3.avif" },
     { name: "Purina Pro Plan", image: "/image/food4.avif" },
-    { name: "Pet Treats", image: "/image/food1.avif" },
-    { name: "Veterinary Diet", image: "/image/food2.avif" },
-    { name: "Cat Litter", image: "/image/food3.avif" },
-    { name: "Purina Pro Plan", image: "/image/food4.avif" },
+    { name: "Pet Shampoo", image: "/image/shampoo.jpg" },
+    { name: "Dog Chew Toys", image: "/image/toys.jpg" },
+    { name: "Pet Grooming Kit", image: "/image/grooming.jpg" },
+    { name: "Automatic Pet Feeder", image: "/image/feeder.jpg" },
+    { name: "Pet Bed", image: "/image/bed.jpg" },
+    { name: "Dog Collar & Leash", image: "/image/collar.jpg" },
+    { name: "Pet Water Fountain", image: "/image/fountain.jpg" },
+    { name: "Pet Travel Carrier", image: "/image/carrier.jpg" }
   ];
 
   const scrollRef = useRef(null);
@@ -41,7 +46,7 @@ export default function PetFood() {
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
           <div>
-            <p className="text-purple-600 text-sm">Pets Food</p>
+            <p className="text-purple-600 text-sm">Pet Care Products</p>
             <div className="w-10 h-1 bg-purple-600 mt-2 mb-4"></div>
 
             <h2 className="text-4xl font-bold text-purple-900 max-w-xl">
@@ -49,9 +54,12 @@ export default function PetFood() {
             </h2>
           </div>
 
-          <button className="text-purple-700 font-semibold hover:underline">
+          <Link
+            to="/shop-products"
+            className="text-purple-700 font-semibold hover:underline"
+          >
             SEE MORE →
-          </button>
+          </Link>
         </div>
 
         {/* Auto Scroll Cards */}
