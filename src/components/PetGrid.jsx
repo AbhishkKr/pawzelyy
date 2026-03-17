@@ -69,7 +69,7 @@ export default function PetGrid() {
             <PetCard
               name={pet.name}
               image={pet.image}
-              href={`/pet/${pet.id}`}
+              href="/pets"
             />
           </div>
         ))}

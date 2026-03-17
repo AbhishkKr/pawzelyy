@@ -28,6 +28,7 @@ import PetCareVideos from "./pages/PetCareVideos";
 import HelpingPets from "./pages/HelpingPets";
 import AllPets from "./pages/AllPets";
 import PetShop from "./pages/PetShop";
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
         <Route path="/helping-pets" element={<HelpingPets />} />
         <Route path="/pets" element={<AllPets />} />
         <Route path="/shop-products" element={<PetShop />} />
+        <Route path="/cart" element={<Cart />} />
         
         
         

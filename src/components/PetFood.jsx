@@ -40,7 +40,6 @@ export default function PetFood() {
 
   return (
     <section className="px-10 py-20">
-
       <div className="bg-[#EDE5DC] rounded-[40px] p-16">
 
         {/* Header */}
@@ -65,12 +64,14 @@ export default function PetFood() {
         {/* Auto Scroll Cards */}
         <div
           ref={scrollRef}
-          className="flex gap-8 overflow-x-auto pb-4"
+          className="flex gap-8 overflow-x-auto pb-4 scrollbar-hide"
         >
           {foods.map((food) => (
-            <div
+            <Link
+              to="/shop-products"
               key={food.name}
-              className="min-w-65 bg-white rounded-2xl p-6 text-center shadow-sm"
+              className="min-w-65 bg-white rounded-2xl p-6 text-center shadow-sm 
+              hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block"
             >
               <img
                 src={food.image}
@@ -81,12 +82,11 @@ export default function PetFood() {
               <p className="mt-4 font-semibold text-purple-900">
                 {food.name}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 
       </div>
-
     </section>
   );
 }
