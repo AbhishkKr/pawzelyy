@@ -6,8 +6,8 @@ import PetCard from "../components/PetCard";
 
 const cats = [
   { name: "Tessie", image: "/image/cat1.avif" },
-  { name: "Tabbies Female", image: "/image/cat2.avif" },
-  { name: "Luna", image: "/image/cat1.avif" },
+  { name: "Jojo", image: "/image/jojo.avif" },
+  { name: "Pusha", image: "/image/pushaa.avif" },
   { name: "Milo", image: "/image/cat2.avif" },
 ];
 

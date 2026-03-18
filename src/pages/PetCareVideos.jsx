@@ -6,19 +6,19 @@ import Footer from "../components/Footer";
 const videos = [
   {
     title: "How to Train Your Dog",
-    url: "https://www.youtube.com/embed/tQ1d_8T2c9Q"
+    url: "https://www.youtube.com/embed/gYjnAPtID1w"
   },
   {
     title: "Cat Care Basics",
-    url: "https://www.youtube.com/embed/J---aiyznGQ"
+    url: "https://www.youtube.com/embed/zPOAaDUzVDY"
   },
   {
     title: "Pet Grooming Guide",
-    url: "https://www.youtube.com/embed/j5a0jTc9S10"
+    url: "https://www.youtube.com/embed/Ni1yyrD2Bi0"
   },
   {
     title: "Dog Exercise Tips",
-    url: "https://www.youtube.com/embed/6XZwK2C9z8I"
+    url: "https://www.youtube.com/embed/cXN8Obr1yss"
   }
 ];
 

@@ -8,9 +8,9 @@ const dogs = [
   { name: "Onyx", image: "/image/dog1.avif" },
   { name: "Chanel", image: "/image/dog2.avif" },
   { name: "Jojo", image: "/image/jojo.avif" },
-  { name: "Choji", image: "/image/choji.avif" },
-  { name: "Pusha", image: "/image/pusha.avif" },
-  { name: "Minna", image: "/image/minna.avif" }
+  { name: "Choji", image: "/image/chojii.avif" },
+  { name: "Pusha", image: "/image/pushaa.avif" },
+  { name: "Minna", image: "/image/minnaaa.avif" }
 ];
 
 export default function DogAdoption() {
