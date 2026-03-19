@@ -10,7 +10,9 @@ export const pets = [
     location: "Pune",
     image: "/image/cat1.avif",
     description:
-      "Tessie is a playful and affectionate cat who loves cuddles and sunny windows."
+      "Tessie is a playful and affectionate cat who loves cuddles and sunny windows.",
+    organization: "PawCare NGO",
+    contact: "+919876543210"
   },
   {
     id: "onyx",
@@ -21,7 +23,9 @@ export const pets = [
     location: "Mumbai",
     image: "/image/dog1.avif",
     description:
-      "Onyx is energetic, loyal, and loves long walks and outdoor play."
+      "Onyx is energetic, loyal, and loves long walks and outdoor play.",
+    organization: "Happy Tails Foundation",
+    contact: "+919123456780"
   },
   {
     id: "tabbies-female",
@@ -32,7 +36,9 @@ export const pets = [
     location: "Delhi",
     image: "/image/cat2.avif",
     description:
-      "A sweet and curious cat who enjoys exploring and playing."
+      "A sweet and curious cat who enjoys exploring and playing.",
+    organization: "Delhi Pet Rescue",
+    contact: "+919988776655"
   },
   {
     id: "chanel",
@@ -43,7 +49,9 @@ export const pets = [
     location: "Bangalore",
     image: "/image/dog2.avif",
     description:
-      "Chanel is friendly, gentle, and perfect for families."
+      "Chanel is friendly, gentle, and perfect for families.",
+    organization: "Bangalore Animal Care",
+    contact: "+919000011122"
   },
   {
     id: "jojo",
@@ -54,7 +62,9 @@ export const pets = [
     location: "Hyderabad",
     image: "/image/jojo.avif",
     description:
-      "Jojo loves running, playing, and meeting new friends."
+      "Jojo loves running, playing, and meeting new friends.",
+    organization: "Hyderabad Pet Shelter",
+    contact: "+919811223344"
   },
   {
     id: "choji",
@@ -65,7 +75,9 @@ export const pets = [
     location: "Pune",
     image: "/image/chojii.avif",
     description:
-      "Choji is small, fluffy, and full of personality."
+      "Choji is small, fluffy, and full of personality.",
+    organization: "Pune Animal Rescue",
+    contact: "+919900112233"
   },
   {
     id: "pusha",
@@ -76,7 +88,9 @@ export const pets = [
     location: "Mumbai",
     image: "/image/pushaa.avif",
     description:
-      "Pusha is calm and elegant, perfect for a peaceful home."
+      "Pusha is calm and elegant, perfect for a peaceful home.",
+    organization: "Mumbai Cat Care",
+    contact: "+919877665544"
   },
   {
     id: "minna",
@@ -87,6 +101,8 @@ export const pets = [
     location: "Delhi",
     image: "/image/minnaaa.avif",
     description:
-      "Minna is affectionate and enjoys relaxing with her humans."
+      "Minna is affectionate and enjoys relaxing with her humans.",
+    organization: "Delhi Animal Welfare",
+    contact: "+919966554433"
   }
 ];

@@ -1,10 +1,13 @@
 // src/pages/AllPets.jsx
 
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { pets } from "../data/pets";
 
 export default function AllPets() {
+  const [selectedPet, setSelectedPet] = useState(null);
+
   return (
     <>
       <Navbar />
@@ -55,7 +58,10 @@ export default function AllPets() {
                 </p>
 
                 {/* Adopt button */}
-                <button className="w-full bg-[#381124] text-white py-2 rounded-lg hover:bg-[#5a1a38] transition">
+                <button
+                  onClick={() => setSelectedPet(pet)}
+                  className="w-full bg-[#381124] text-white py-2 rounded-lg hover:bg-[#5a1a38] transition"
+                >
                   Adopt {pet.name}
                 </button>
 
@@ -65,6 +71,66 @@ export default function AllPets() {
           ))}
 
         </div>
+
+        {/* Modal */}
+        {selectedPet && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+            <div className="bg-white rounded-2xl p-6 w-[90%] max-w-md relative">
+
+              {/* Close */}
+              <button
+                onClick={() => setSelectedPet(null)}
+                className="absolute top-3 right-3 text-gray-500 text-xl"
+              >
+                ✕
+              </button>
+
+              {/* Image */}
+              <img
+                src={selectedPet.image}
+                alt={selectedPet.name}
+                className="h-48 w-full object-cover rounded-lg mb-4"
+              />
+
+              {/* Info */}
+              <h2 className="text-2xl font-bold mb-2">
+                {selectedPet.name}
+              </h2>
+
+              <p><strong>Breed:</strong> {selectedPet.breed}</p>
+              <p><strong>Age:</strong> {selectedPet.age}</p>
+              <p><strong>Location:</strong> {selectedPet.location}</p>
+
+              <hr className="my-4" />
+
+              <p><strong>Organization:</strong> {selectedPet.organization}</p>
+              <p><strong>Contact:</strong> {selectedPet.contact}</p>
+
+              <p className="mt-2 text-gray-600">
+                {selectedPet.description}
+              </p>
+
+              {/* Actions */}
+              <a
+                href={`tel:${selectedPet.contact}`}
+                className="block mt-4 text-center bg-green-600 text-white py-2 rounded-lg"
+              >
+                Call Now
+              </a>
+
+              <a
+                href={`https://wa.me/${selectedPet.contact}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mt-2 text-center bg-green-500 text-white py-2 rounded-lg"
+              >
+                Chat on WhatsApp
+              </a>
+
+            </div>
+          </div>
+        )}
 
       </section>
 

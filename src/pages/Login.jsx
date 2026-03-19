@@ -1,7 +1,29 @@
 // src/pages/Login.jsx
-import { Link } from "react-router-dom";
+
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login successful 🎉");
+
+      navigate("/"); // redirect to home
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-10">
 
@@ -30,18 +52,22 @@ export default function Login() {
             Log in to continue your journey with Pawzely
           </p>
 
-          {/* Form */}
-          <form className="space-y-5">
+          {/* FORM */}
+          <form onSubmit={handleLogin} className="space-y-5">
 
             <input
               type="email"
               placeholder="Email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border rounded-lg px-4 py-3"
             />
 
             <input
               type="password"
               placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full border rounded-lg px-4 py-3"
             />
 
@@ -51,12 +77,15 @@ export default function Login() {
                 Remember me
               </label>
 
-              <span className="cursor-pointer">
+              <span className="cursor-pointer hover:text-black">
                 Forgot Password?
               </span>
             </div>
 
-            <button className="bg-[#381124] text-white px-6 py-3 rounded-lg w-full">
+            <button
+              type="submit"
+              className="bg-[#381124] text-white px-6 py-3 rounded-lg w-full hover:bg-[#5a1a38] transition"
+            >
               Log In
             </button>
 

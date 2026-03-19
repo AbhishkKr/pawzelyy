@@ -1,6 +1,27 @@
-// src/pages/Signup.jsx
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Signup() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Signup successful 🎉");
+
+      navigate("/"); // redirect to home
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-10">
 
@@ -9,59 +30,57 @@ export default function Signup() {
         {/* LEFT SIDE FORM */}
         <div className="p-12">
 
-         <div className="flex items-center gap-2 mb-6">
-  <img
-    src="/image/paw.jpg"
-    alt="paw"
-    className="w-8 h-8 rounded-full object-cover"
-  />
-  <p className="text-[#381124] font-semibold text-lg">
-    Pawzely
-  </p>
-</div>
+          <div className="flex items-center gap-2 mb-6">
+            <img
+              src="/image/paw.jpg"
+              alt="paw"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <p className="text-[#381124] font-semibold text-lg">
+              Pawzely
+            </p>
+          </div>
 
           <h1 className="text-4xl font-bold mb-4">
-            Holla, <br /> Welcome Back
+            Create Account
           </h1>
 
           <p className="text-gray-500 mb-8">
-            Hey, welcome back to your special place
+            Join Pawzely and find your perfect pet 🐾
           </p>
 
-          <form className="space-y-5">
+          <form onSubmit={handleSignup} className="space-y-5">
 
             <input
               type="email"
               placeholder="Email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border rounded-lg px-4 py-3"
             />
 
             <input
               type="password"
               placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full border rounded-lg px-4 py-3"
             />
 
-            <div className="flex justify-between text-sm text-gray-500">
-              <label className="flex gap-2">
-                <input type="checkbox" />
-                Remember me
-              </label>
-
-              <span className="cursor-pointer">Forgot Password?</span>
-            </div>
-
-            <button className="bg-[#381124] text-white px-6 py-3 rounded-lg w-full">
-              Sign In
+            <button
+              type="submit"
+              className="bg-[#381124] text-white px-6 py-3 rounded-lg w-full hover:bg-[#5a1a38] transition"
+            >
+              Sign Up
             </button>
 
           </form>
 
           <p className="text-sm text-gray-500 mt-6">
-            Don't have an account?
-            <span className=" text-[#381124] cursor-pointer ml-2">
-              Sign Up
-            </span>
+            Already have an account?
+            <Link to="/login" className="text-[#381124] ml-2">
+              Log In
+            </Link>
           </p>
 
         </div>
