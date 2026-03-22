@@ -70,7 +70,7 @@ export default function CatBreeds() {
               <img
                 src={breed.image}
                 alt={breed.name}
-                className="h-fit sm:h-80 md:h-95 w-full object-cover"
+                className="h-95 sm:h-80 md:h-95 w-full object-cover"
               />
 
               <div className="p-4 sm:p-5 md:p-6">
