@@ -176,11 +176,11 @@ export default function Signup() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-gradient-to-r from-[#381124] to-[#89254d] flex items-center justify-center">
+        <div className="bg-linear-to-r from-[#381124] to-[#89254d] flex items-center justify-center">
           <img
             src="/image/doglog.png"
             alt="dog"
-            className="max-h-[400px]"
+            className="max-h-100"
           />
         </div>
       </div>
