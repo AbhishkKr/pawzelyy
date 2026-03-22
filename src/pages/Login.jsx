@@ -230,7 +230,7 @@ export default function Login() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-gradient-to-r from-[#381124] to-[#89254d] flex items-center justify-center p-6 md:p-10">
+        <div className="bg-linear-to-r from-[#381124] to-[#89254d] flex items-center justify-center p-6 md:p-10">
           <img
             src="/image/doglog.png"
             alt="dog"

@@ -27,8 +27,7 @@ export default function FAQ() {
     <>
       <Navbar />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
-
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 pt-24 sm:pt-28 pb-12 sm:pb-16 md:pb-20">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-center">
           Frequently Asked Questions
         </h1>
