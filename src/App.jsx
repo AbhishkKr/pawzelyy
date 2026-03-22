@@ -1,4 +1,12 @@
+// src/App.jsx
+
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
@@ -31,13 +39,25 @@ import PetShop from "./pages/PetShop";
 import Cart from "./pages/Cart";
 import Newsletter from "./pages/Newsletter";
 import BlogDetails from "./pages/BlogDetails";
+import Profile from "./pages/Profile";
 
 export default function App() {
+
+  // 🔐 Auth Listener (ONLY FOR STATE, NO REDIRECT)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(user ? "Logged in" : "Logged out");
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <ScrollToTop />
 
       <Routes>
+        {/* 🌐 PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/signup" element={<Signup />} />
@@ -66,15 +86,29 @@ export default function App() {
         <Route path="/helping-pets" element={<HelpingPets />} />
         <Route path="/pets" element={<AllPets />} />
         <Route path="/shop-products" element={<PetShop />} />
-        <Route path="/cart" element={<Cart />} />
+
+        {/* 🔒 PROTECTED ROUTES */}
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 📄 OTHER */}
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
-        
-        
-        
-        
-        
-        
       </Routes>
     </>
   );
