@@ -47,39 +47,39 @@ export default function DogBreeds() {
     <>
       <Navbar />
 
-      <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
+      <section className="px-4 sm:px-6 md:px-10 lg:px-16 pt-24 sm:pt-28 pb-12 sm:pb-16 md:pb-20 max-w-7xl mx-auto">
 
-        <h1 className="text-4xl font-bold text-center mb-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6">
           Dog Breeds
         </h1>
 
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-16">
+        <p className="text-gray-600 text-sm sm:text-base text-center max-w-md sm:max-w-xl md:max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16 leading-relaxed">
           Explore popular dog breeds and learn about their personalities,
           characteristics, and suitability for different families.
         </p>
 
         {/* Breed Cards */}
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
 
           {breeds.map((breed, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
+              className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden"
             >
 
               <img
                 src={breed.image}
                 alt={breed.name}
-                className="h-90 w-full object-cover "
+                className="h-95 sm:h-72 md:h-90 w-full object-cover"
               />
 
-              <div className="p-6">
+              <div className="p-4 sm:p-5 md:p-6">
 
-                <h3 className="text-xl font-semibold mb-3">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3">
                   {breed.name}
                 </h3>
 
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                   {breed.description}
                 </p>
 

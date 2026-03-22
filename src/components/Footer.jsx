@@ -68,7 +68,7 @@ export default function Footer() {
 
           <p className="mb-6 text-sm sm:text-base max-w-xs">
             To get the latest on pet adoption and pet care,
-            sign up for our newsletter.
+            click here for our newsletter.
           </p>
 
           {/* FIX 5: Use Link styled as button instead of Link wrapping button */}

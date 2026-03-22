@@ -39,44 +39,44 @@ export default function Rescues() {
     <>
       <Navbar />
 
-      <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
+      <section className="px-4 sm:px-6 md:px-10 lg:px-16 pt-24 sm:pt-28 pb-12 sm:pb-16 md:pb-20 max-w-7xl mx-auto">
 
         {/* Page Title */}
-        <h1 className="text-4xl font-bold mb-6 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-center">
           Shelters & Rescues
         </h1>
 
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-16">
+        <p className="text-gray-600 text-sm sm:text-base text-center max-w-md sm:max-w-xl md:max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16 leading-relaxed">
           Discover trusted shelters and rescue organizations working to give
           pets a second chance at life.
         </p>
 
         {/* Shelter Cards */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
 
           {shelters.map((shelter, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
+              className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden"
             >
 
               <img
                 src={shelter.image}
                 alt={shelter.name}
-                className="h-52 w-full object-cover"
+                className="h-44 sm:h-48 md:h-52 w-full object-cover"
               />
 
-              <div className="p-6">
+              <div className="p-4 sm:p-5 md:p-6">
 
-                <h3 className="text-lg font-semibold mb-2">
+                <h3 className="text-base sm:text-lg font-semibold mb-2">
                   {shelter.name}
                 </h3>
 
-                <p className="text-sm text-gray-500 mb-3">
+                <p className="text-xs sm:text-sm text-gray-500 mb-3">
                   📍 {shelter.location}
                 </p>
 
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                   {shelter.description}
                 </p>
 

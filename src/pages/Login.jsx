@@ -1,5 +1,7 @@
+// src/pages/Login.jsx
+
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth, db } from "../firebase";
 
 import {
@@ -18,7 +20,12 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
   const provider = new GoogleAuthProvider();
+
+  // 🔥 GET PREVIOUS PAGE (VERY IMPORTANT)
+  const from =
+    location.state?.from?.pathname + location.state?.from?.search || "/";
 
   // 🔐 EMAIL LOGIN
   const handleLogin = async (e) => {
@@ -52,8 +59,8 @@ export default function Login() {
 
       alert("Login successful 🎉");
 
-      // ✅ ALWAYS GO TO HERO PAGE
-      navigate("/", { replace: true });
+      // 🔥 REDIRECT TO PREVIOUS PAGE
+      navigate(from, { replace: true });
 
     } catch (error) {
       console.error(error);
@@ -90,8 +97,8 @@ export default function Login() {
         });
       }
 
-      // ✅ ALWAYS GO TO HERO PAGE
-      navigate("/", { replace: true });
+      // 🔥 REDIRECT TO PREVIOUS PAGE
+      navigate(from, { replace: true });
 
     } catch (error) {
       console.error(error);
@@ -139,6 +146,13 @@ export default function Login() {
             Welcome Back
           </h1>
 
+          {/* 🔥 SHOW MESSAGE IF REDIRECTED */}
+          {location.state?.from && (
+            <p className="text-sm text-gray-500 mb-4">
+              Please log in to continue
+            </p>
+          )}
+
           <p className="text-gray-500 mb-8">
             Log in to continue your journey with Pawzely 🐾
           </p>
@@ -146,7 +160,6 @@ export default function Login() {
           {/* FORM */}
           <form onSubmit={handleLogin} className="space-y-5">
 
-            {/* EMAIL */}
             <input
               type="email"
               placeholder="Email"
@@ -156,7 +169,6 @@ export default function Login() {
               className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#381124]"
             />
 
-            {/* PASSWORD */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -175,7 +187,6 @@ export default function Login() {
               </span>
             </div>
 
-            {/* OPTIONS */}
             <div className="flex justify-between text-sm text-gray-500">
               <label className="flex gap-2">
                 <input type="checkbox" />
@@ -190,7 +201,6 @@ export default function Login() {
               </span>
             </div>
 
-            {/* BUTTON */}
             <button
               type="submit"
               disabled={loading}
@@ -212,10 +222,7 @@ export default function Login() {
 
           <p className="text-sm text-gray-500 mt-6">
             Don't have an account?
-            <Link
-              to="/signup"
-              className="text-[#381124] font-medium ml-2"
-            >
+            <Link to="/signup" className="text-[#381124] ml-2 font-medium">
               Sign Up
             </Link>
           </p>
@@ -223,7 +230,7 @@ export default function Login() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-linear-to-r from-[#381124] to-[#89254d] flex items-center justify-center p-6 md:p-10">
+        <div className="bg-gradient-to-r from-[#381124] to-[#89254d] flex items-center justify-center p-6 md:p-10">
           <img
             src="/image/doglog.png"
             alt="dog"
