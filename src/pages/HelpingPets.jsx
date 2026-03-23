@@ -64,7 +64,7 @@ export default function HelpingPets() {
               <img
                 src={way.image}
                 alt={way.title}
-                className="h-90 sm:h-56 md:h-64 w-full object-cover"
+                className="h-90 sm:h-56 md:h-80 w-full object-cover"
               />
 
               <div className="p-4 sm:p-5 md:p-6">
