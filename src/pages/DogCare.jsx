@@ -64,7 +64,7 @@ export default function DogCare() {
               <img
                 src={tip.image}
                 alt={tip.title}
-                className="h-44 sm:h-48 md:h-52 w-full object-cover"
+                className="h-70 sm:h-48 md:h-70 w-full object-cover"
               />
 
               <div className="p-4 sm:p-5 md:p-6">
