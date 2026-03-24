@@ -88,7 +88,7 @@ export default function AboutPawzely() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3">
             Contact Us
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base break-words">
+          <p className="text-gray-600 text-sm sm:text-base wrap-break-word">
             For inquiries, partnerships, or support please reach out to
             support@pawzely.com
           </p>
