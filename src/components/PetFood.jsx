@@ -1,5 +1,31 @@
+// src/components/PetFood.jsx
+
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+// 🔥 Animation configs (FINAL - delayed + premium feel)
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,   // word gap
+      delayChildren: 0.6       // 👈 delay AFTER section comes into view
+    },
+  },
+};
+
+const word = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export default function PetFood() {
   const foods = [
@@ -39,35 +65,68 @@ export default function PetFood() {
   }, []);
 
   return (
-    // FIX 1: Responsive horizontal padding and vertical padding
     <section className="px-4 sm:px-6 md:px-10 py-10 md:py-20">
-      {/* FIX 2: Responsive inner padding and border-radius */}
       <div className="bg-[#EDE5DC] rounded-3xl md:rounded-[40px] p-6 sm:p-8 md:p-16">
 
-        {/* Header */}
-        {/* FIX 3: Allow header row to wrap on small screens; add gap */}
+        {/* HEADER */}
         <div className="flex flex-wrap justify-between items-start gap-4 mb-8 md:mb-12">
+
           <div>
-            <p className="text-purple-600 text-sm">Pet Care Products</p>
+            {/* 🔥 Pet Care Products */}
+            <motion.p
+              className="text-purple-600 text-sm flex flex-wrap gap-1"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }} // 👈 trigger later (50% visible)
+            >
+              {"Pet Care Products".split(" ").map((w, i) => (
+                <motion.span key={i} variants={word}>
+                  {w}
+                </motion.span>
+              ))}
+            </motion.p>
+
             <div className="w-10 h-1 bg-purple-600 mt-2 mb-4"></div>
 
-            {/* FIX 4: Responsive heading size */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 max-w-xs sm:max-w-sm md:max-w-xl">
-              Save an Extra 5-10% on Every Autoship Order
-            </h2>
+            {/* 🔥 Heading */}
+            <motion.h2
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 max-w-xs sm:max-w-sm md:max-w-xl flex flex-wrap gap-2"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              {"Save an Extra 5-10% on Every Autoship Order".split(" ").map((w, i) => (
+                <motion.span key={i} variants={word}>
+                  {w}
+                </motion.span>
+              ))}
+            </motion.h2>
           </div>
 
-          {/* FIX 5: Ensure the link doesn't get squished */}
-          <Link
-            to="/shop-products"
-            className="text-purple-700 font-semibold hover:underline whitespace-nowrap self-start"
+          {/* 🔥 SEE MORE */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.8, // 👈 appears after text
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{ once: true, amount: 0.5 }}
           >
-            SEE MORE →
-          </Link>
+            <Link
+              to="/shop-products"
+              className="text-purple-700 font-semibold hover:underline whitespace-nowrap self-start"
+            >
+              SEE MORE →
+            </Link>
+          </motion.div>
+
         </div>
 
-        {/* Auto Scroll Cards */}
-        {/* FIX 6: Responsive gap between cards */}
+        {/* AUTO SCROLL CARDS */}
         <div
           ref={scrollRef}
           className="flex gap-4 md:gap-8 overflow-x-auto pb-4 scrollbar-hide"
@@ -76,7 +135,6 @@ export default function PetFood() {
             <Link
               to="/shop-products"
               key={food.name}
-              // FIX 7: Slightly smaller card on mobile; consistent min-width using bracket notation
               className="min-w-50 sm:min-w-55 md:min-w-65 bg-white rounded-2xl p-4 md:p-6 text-center shadow-sm
               hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block"
             >

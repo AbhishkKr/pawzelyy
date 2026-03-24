@@ -8,10 +8,11 @@ export default function AboutPawzely() {
     <>
       <Navbar />
 
-      <div className="px-4 sm:px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 pb-12 sm:pb-16 md:pb-20 max-w-5xl mx-auto">
+      <div className="px-4 sm:px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-14 max-w-5xl mx-auto">
+
         {/* About */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+        <section className="mb-6 sm:mb-8 md:mb-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
             About Pawzely
           </h1>
           <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -22,12 +23,12 @@ export default function AboutPawzely() {
         </section>
 
         {/* FAQs */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6">
+        <section className="mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3">
             FAQs
           </h2>
 
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-2 sm:space-y-3">
             <div>
               <h3 className="font-semibold text-sm sm:text-base">
                 How do I adopt a pet?
@@ -49,7 +50,7 @@ export default function AboutPawzely() {
           </div>
         </section>
 
-        {/* Reusable Section Template */}
+        {/* Reusable Sections */}
         {[
           {
             title: "Partnerships",
@@ -72,8 +73,8 @@ export default function AboutPawzely() {
             text: "Pawzely has been featured in multiple adoption awareness campaigns and pet care communities.",
           },
         ].map((section, index) => (
-          <section key={index} className="mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6">
+          <section key={index} className="mb-6 sm:mb-8 md:mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3">
               {section.title}
             </h2>
             <p className="text-gray-600 text-sm sm:text-base">
@@ -84,10 +85,10 @@ export default function AboutPawzely() {
 
         {/* Contact */}
         <section>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3">
             Contact Us
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base wrap-break-word">
+          <p className="text-gray-600 text-sm sm:text-base break-words">
             For inquiries, partnerships, or support please reach out to
             support@pawzely.com
           </p>
