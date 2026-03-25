@@ -45,7 +45,7 @@ export default function Terms() {
 
       <section className="max-w-4xl lg:max-w-5xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-12 sm:py-16 md:py-20">
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 pt-6 sm:mb-10 text-center">
           Terms of Service
         </h1>
 

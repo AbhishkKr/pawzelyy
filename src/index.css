@@ -6,15 +6,9 @@ html {
 
 /* floating dog animation */
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
 }
 
 .animate-float {
@@ -43,17 +37,17 @@ html {
   }
 }
 
-/* hide scrollbar for carousel */
+/* ✅ Hide scrollbar (clean version) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 
-/* carousel gradient edges (optional premium effect) */
+/* carousel gradient edges */
 .carousel-fade {
   position: relative;
 }
