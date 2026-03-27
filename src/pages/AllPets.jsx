@@ -12,7 +12,7 @@ export default function AllPets() {
     <>
       <Navbar />
 
-      <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
+      <section className="px-6 md:px-16 py-30  max-w-7xl mx-auto">
 
         <h1 className="text-4xl font-bold text-center mb-6">
           All Pets Available for Adoption

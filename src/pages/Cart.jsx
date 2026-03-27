@@ -1,15 +1,66 @@
+// src/pages/Cart.jsx
+
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { db, auth } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Cart() {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, setCart } = useCart();
 
   const [showCheckout, setShowCheckout] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Form states
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  // Place Order
+  const handlePlaceOrder = async () => {
+    const user = auth.currentUser;
+
+    if (!user) {
+      alert("Please login first");
+      return;
+    }
+
+    if (!name || !phone || !address) {
+      alert("Please fill all details");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await addDoc(collection(db, "orders"), {
+        userId: user.uid,
+        userEmail: user.email,
+        customerName: name, // ✅ fixed
+        phone,
+        address,
+        items: cart,
+        total: total,
+        status: "placed",
+        createdAt: serverTimestamp()
+      });
+
+      // ✅ Clear cart properly
+      setCart([]);
+      setOrderPlaced(true);
+      setShowCheckout(false);
+
+    } catch (error) {
+      console.error("Error placing order:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -19,7 +70,8 @@ export default function Cart() {
 
         <h1 className="text-3xl font-bold mb-10">Your Cart</h1>
 
-        {cart.length === 0 ? (
+        {/* Cart Items */}
+        {cart.length === 0 && !orderPlaced ? (
           <p>Your cart is empty.</p>
         ) : (
           cart.map((item) => (
@@ -43,9 +95,11 @@ export default function Cart() {
         )}
 
         {/* Total */}
-        <div className="mt-10 text-xl font-bold">
-          Total: ₹{total}
-        </div>
+        {cart.length > 0 && (
+          <div className="mt-10 text-xl font-bold">
+            Total: ₹{total}
+          </div>
+        )}
 
         {/* Checkout Button */}
         {cart.length > 0 && !showCheckout && !orderPlaced && (
@@ -68,25 +122,32 @@ export default function Cart() {
             <input
               type="text"
               placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full mb-3 p-2 border rounded"
             />
 
             <input
               type="text"
               placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full mb-3 p-2 border rounded"
             />
 
             <textarea
               placeholder="Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               className="w-full mb-3 p-2 border rounded"
             />
 
             <button
-              onClick={() => setOrderPlaced(true)}
-              className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
+              onClick={handlePlaceOrder}
+              disabled={loading}
+              className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 disabled:opacity-50"
             >
-              Place Order
+              {loading ? "Placing Order..." : "Place Order"}
             </button>
           </div>
         )}

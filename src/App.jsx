@@ -40,6 +40,7 @@ import Cart from "./pages/Cart";
 import Newsletter from "./pages/Newsletter";
 import BlogDetails from "./pages/BlogDetails";
 import Profile from "./pages/Profile";
+import Orders from "./pages/Orders";
 
 export default function App() {
 
@@ -109,6 +110,7 @@ export default function App() {
         {/* 📄 OTHER */}
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </>
   );

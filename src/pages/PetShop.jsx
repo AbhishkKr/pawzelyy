@@ -6,18 +6,18 @@ import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const products = [
-  { name: "Pet Treats", image: "/image/food1.avif", price: 299 },
-  { name: "Veterinary Diet", image: "/image/food2.avif", price: 899 },
-  { name: "Cat Litter", image: "/image/food3.avif", price: 499 },
-  { name: "Purina Pro Plan", image: "/image/food4.avif", price: 999 },
-  { name: "Pet Shampoo", image: "/image/shampoo.jpg", price: 349 },
-  { name: "Dog Chew Toys", image: "/image/toys.jpg", price: 199 },
-  { name: "Pet Grooming Kit", image: "/image/grooming.jpg", price: 699 },
-  { name: "Automatic Pet Feeder", image: "/image/feeder.jpg", price: 1599 },
-  { name: "Pet Bed", image: "/image/bed.jpg", price: 799 },
-  { name: "Dog Collar & Leash", image: "/image/collar.jpg", price: 399 },
-  { name: "Pet Water Fountain", image: "/image/fountain.jpg", price: 1299 },
-  { name: "Pet Travel Carrier", image: "/image/carrier.jpg", price: 1499 }
+  { id: 1, name: "Pet Treats", image: "/image/food1.avif", price: 299 },
+  { id: 2, name: "Veterinary Diet", image: "/image/food2.avif", price: 899 },
+  { id: 3, name: "Cat Litter", image: "/image/food3.avif", price: 499 },
+  { id: 4, name: "Purina Pro Plan", image: "/image/food4.avif", price: 999 },
+  { id: 5, name: "Pet Shampoo", image: "/image/shampoo.jpg", price: 349 },
+  { id: 6, name: "Dog Chew Toys", image: "/image/toys.jpg", price: 199 },
+  { id: 7, name: "Pet Grooming Kit", image: "/image/grooming.jpg", price: 699 },
+  { id: 8, name: "Automatic Pet Feeder", image: "/image/feeder.jpg", price: 1599 },
+  { id: 9, name: "Pet Bed", image: "/image/bed.jpg", price: 799 },
+  { id: 10, name: "Dog Collar & Leash", image: "/image/collar.jpg", price: 399 },
+  { id: 11, name: "Pet Water Fountain", image: "/image/fountain.jpg", price: 1299 },
+  { id: 12, name: "Pet Travel Carrier", image: "/image/carrier.jpg", price: 1499 }
 ];
 
 export default function PetShop() {
@@ -25,6 +25,7 @@ export default function PetShop() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  // Buy → Add to cart → Go to cart page
   const handleBuy = (product) => {
     addToCart(product);
     navigate("/cart");
@@ -48,7 +49,7 @@ export default function PetShop() {
 
           {products.map((product) => (
             <div
-              key={product.name}
+              key={product.id}
               className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-xl transition"
             >
 
@@ -76,7 +77,7 @@ export default function PetShop() {
                   Add to Cart
                 </button>
 
-                {/* Buy */}
+                {/* Buy Now */}
                 <button
                   onClick={() => handleBuy(product)}
                   className="flex-1 bg-[#381124] text-white py-2 rounded-lg hover:bg-[#5a1a38] transition"

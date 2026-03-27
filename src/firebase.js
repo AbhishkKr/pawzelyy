@@ -2,20 +2,19 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+// Use environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyClbVIwCNgoin4pJvp-n_1OeIGOs6m3hgQ",
-  authDomain: "pawzely-68051.firebaseapp.com",
-  projectId: "pawzely-68051",
-  storageBucket: "pawzely-68051.appspot.com",
-  messagingSenderId: "1050655432918",
-  appId: "1:1050655432918:web:8f5004af8998ee9472e977"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ Auth (for signup/login)
+// Export services
 export const auth = getAuth(app);
-
-// ✅ Firestore (for database)
 export const db = getFirestore(app);
