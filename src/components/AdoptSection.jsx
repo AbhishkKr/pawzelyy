@@ -85,9 +85,9 @@ export default function AdoptSection() {
               }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Dogs make for the best friends, and it's only right that we
-              celebrate them for all the joy and love they’ve given us.
-              Whether labeled on a dog bandana.
+              Dogs are pure souls who stand beside us always,
+               so it's only right that we celebrate them for every bit of love and 
+               comfort they bring into our lives.
             </motion.p>
 
             {/* BUTTON */}

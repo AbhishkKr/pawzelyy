@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { auth, db } from "../firebase";
 
 import {
@@ -16,9 +16,16 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
   const provider = new GoogleAuthProvider();
+
+  // ✅ Same redirect logic as Login
+  const from = location.state?.from
+    ? location.state.from.pathname + location.state.from.search
+    : "/";
 
   // 🔐 EMAIL SIGNUP
   const handleSignup = async (e) => {
@@ -54,8 +61,12 @@ export default function Signup() {
         createdAt: serverTimestamp(),
       });
 
-      alert("Signup successful 🎉");
-      navigate("/");
+      // ✅ Success message + redirect
+      setMessage("🎉 Account created successfully");
+
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1500);
 
     } catch (error) {
       console.error(error);
@@ -87,7 +98,12 @@ export default function Signup() {
         createdAt: serverTimestamp(),
       });
 
-      navigate("/");
+      // ✅ Success message + redirect
+      setMessage("🎉 Signed up with Google");
+
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1500);
 
     } catch (error) {
       console.error(error);
@@ -107,9 +123,15 @@ export default function Signup() {
             Create Account
           </h1>
 
+          {/* ✅ Success Message */}
+          {message && (
+            <div className="mb-4 text-green-600 text-sm font-medium bg-green-50 p-3 rounded-lg">
+              {message}
+            </div>
+          )}
+
           <form onSubmit={handleSignup} className="space-y-5">
 
-            {/* EMAIL */}
             <input
               type="email"
               placeholder="Email"
@@ -119,7 +141,6 @@ export default function Signup() {
               className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#381124]"
             />
 
-            {/* PASSWORD */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -138,7 +159,6 @@ export default function Signup() {
               </span>
             </div>
 
-            {/* CONFIRM PASSWORD */}
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Confirm Password"
@@ -148,7 +168,6 @@ export default function Signup() {
               className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#381124]"
             />
 
-            {/* BUTTON */}
             <button
               type="submit"
               disabled={loading}
@@ -158,7 +177,6 @@ export default function Signup() {
             </button>
           </form>
 
-          {/* GOOGLE */}
           <button
             onClick={handleGoogleSignup}
             disabled={loading}

@@ -18,14 +18,16 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
   const provider = new GoogleAuthProvider();
 
-  // 🔥 GET PREVIOUS PAGE (VERY IMPORTANT)
-  const from =
-    location.state?.from?.pathname + location.state?.from?.search || "/";
+  // ✅ FIXED: Get previous page safely
+  const from = location.state?.from
+    ? location.state.from.pathname + location.state.from.search
+    : "/";
 
   // 🔐 EMAIL LOGIN
   const handleLogin = async (e) => {
@@ -57,10 +59,12 @@ export default function Login() {
         });
       }
 
-      alert("Login successful 🎉");
+      // ✅ Success message + redirect
+      setMessage("✅ You have successfully logged in");
 
-      // 🔥 REDIRECT TO PREVIOUS PAGE
-      navigate(from, { replace: true });
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1500);
 
     } catch (error) {
       console.error(error);
@@ -97,8 +101,12 @@ export default function Login() {
         });
       }
 
-      // 🔥 REDIRECT TO PREVIOUS PAGE
-      navigate(from, { replace: true });
+      // ✅ Success message + redirect
+      setMessage("✅ Logged in with Google");
+
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1500);
 
     } catch (error) {
       console.error(error);
@@ -146,11 +154,18 @@ export default function Login() {
             Welcome Back
           </h1>
 
-          {/* 🔥 SHOW MESSAGE IF REDIRECTED */}
+          {/* 🔥 Redirect message */}
           {location.state?.from && (
             <p className="text-sm text-gray-500 mb-4">
               Please log in to continue
             </p>
+          )}
+
+          {/* ✅ Success message */}
+          {message && (
+            <div className="mb-4 text-green-600 text-sm font-medium bg-green-50 p-3 rounded-lg">
+              {message}
+            </div>
           )}
 
           <p className="text-gray-500 mb-8">
