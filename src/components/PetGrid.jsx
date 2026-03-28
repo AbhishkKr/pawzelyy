@@ -42,17 +42,19 @@ export default function PetGrid() {
     <section id="pets" className="px-10 py-20 bg-secondary">
 
       {/* Header */}
-      <div className="flex justify-between items-center mb-10">
-        <h3 className="text-3xl font-bold">
-          2k+ Pets Available for Adoption Near You
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8 sm:mb-10">
+
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold leading-snug">
+          Pets Available for Adoption Near You
         </h3>
 
         <Link
           to="/pets"
-          className="text-[#381124] font-semibold hover:underline"
+          className="text-[#381124] font-semibold hover:underline self-start sm:self-auto"
         >
           See More →
         </Link>
+
       </div>
 
       {/* Scroll container */}
