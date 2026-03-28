@@ -1,11 +1,12 @@
 // src/App.jsx
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import IntroLoader from "./components/IntroLoader";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -43,8 +44,10 @@ import Profile from "./pages/Profile";
 import Orders from "./pages/Orders";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  // 🔐 Auth Listener (ONLY FOR STATE, NO REDIRECT)
+  // 🔐 Auth Listener
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log(user ? "Logged in" : "Logged out");
@@ -52,6 +55,35 @@ export default function App() {
 
     return () => unsubscribe();
   }, []);
+
+  // 🎬 Awwwards Loader Timing
+  useEffect(() => {
+    const t1 = setTimeout(() => {
+      setFadeOut(true); // start fade out
+    }, 2200);
+
+    const t2 = setTimeout(() => {
+      setLoading(false); // remove loader
+    }, 2800);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
+  // 🟣 SHOW INTRO LOADER
+  if (loading) {
+    return (
+      <div
+        className={`transition-opacity duration-700 ${
+          fadeOut ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <IntroLoader />
+      </div>
+    );
+  }
 
   return (
     <>
