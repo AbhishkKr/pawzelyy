@@ -52,6 +52,12 @@ export default function Cart() {
       setOrderPlaced(true);
       setShowCheckout(false);
 
+      // ✅ AUTO SCROLL TO TOP
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     } catch (error) {
       console.error("Error placing order:", error);
     } finally {
@@ -63,11 +69,12 @@ export default function Cart() {
     <>
       <Navbar />
 
-      <section className="px-6 md:px-10 py-24 max-w-5xl mx-auto">
+      {/*  MIN HEIGHT FIX (keeps footer down) */}
+      <section className="px-6 md:px-10 py-30 max-w-5xl mx-auto min-h-[70vh]">
 
         <h1 className="text-3xl font-bold mb-10">Your Cart</h1>
 
-        {/* Empty Cart */}
+        {/* EMPTY CART */}
         {cart.length === 0 && !orderPlaced ? (
           <p>Your cart is empty.</p>
         ) : (
@@ -79,14 +86,12 @@ export default function Cart() {
               {/* LEFT */}
               <div className="flex items-center gap-4">
 
-                {/*IMAGE */}
                 <img
                   src={item.image}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded-xl border shadow-sm hover:scale-105 transition"
                 />
 
-                {/* DETAILS */}
                 <div>
                   <p className="font-semibold text-lg">{item.name}</p>
                   <p className="text-gray-500">₹{item.price}</p>
@@ -162,7 +167,7 @@ export default function Cart() {
           </div>
         )}
 
-        {/* SUCCESS */}
+        {/* SUCCESS MESSAGE */}
         {orderPlaced && (
           <div className="mt-8 p-6 bg-green-100 rounded-xl">
             <h2 className="text-xl font-bold text-green-700">
