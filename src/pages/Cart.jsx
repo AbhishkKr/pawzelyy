@@ -14,14 +14,12 @@ export default function Cart() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Form states
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-  // Place Order
   const handlePlaceOrder = async () => {
     const user = auth.currentUser;
 
@@ -41,7 +39,7 @@ export default function Cart() {
       await addDoc(collection(db, "orders"), {
         userId: user.uid,
         userEmail: user.email,
-        customerName: name, // ✅ fixed
+        customerName: name,
         phone,
         address,
         items: cart,
@@ -50,7 +48,6 @@ export default function Cart() {
         createdAt: serverTimestamp()
       });
 
-      // ✅ Clear cart properly
       setCart([]);
       setOrderPlaced(true);
       setShowCheckout(false);
@@ -66,27 +63,40 @@ export default function Cart() {
     <>
       <Navbar />
 
-      <section className="px-10 py-20 max-w-5xl mx-auto">
+      <section className="px-6 md:px-10 py-24 max-w-5xl mx-auto">
 
         <h1 className="text-3xl font-bold mb-10">Your Cart</h1>
 
-        {/* Cart Items */}
+        {/* Empty Cart */}
         {cart.length === 0 && !orderPlaced ? (
           <p>Your cart is empty.</p>
         ) : (
           cart.map((item) => (
             <div
-              key={item.name}
+              key={item.id}
               className="flex justify-between items-center border-b py-4"
             >
-              <div>
-                <p className="font-semibold">{item.name}</p>
-                <p className="text-gray-500">₹{item.price}</p>
+              {/* LEFT */}
+              <div className="flex items-center gap-4">
+
+                {/*IMAGE */}
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-20 h-20 object-cover rounded-xl border shadow-sm hover:scale-105 transition"
+                />
+
+                {/* DETAILS */}
+                <div>
+                  <p className="font-semibold text-lg">{item.name}</p>
+                  <p className="text-gray-500">₹{item.price}</p>
+                </div>
               </div>
 
+              {/* REMOVE */}
               <button
-                onClick={() => removeFromCart(item.name)}
-                className="text-red-500"
+                onClick={() => removeFromCart(item.id)}
+                className="text-red-500 hover:underline"
               >
                 Remove
               </button>
@@ -94,14 +104,14 @@ export default function Cart() {
           ))
         )}
 
-        {/* Total */}
+        {/* TOTAL */}
         {cart.length > 0 && (
           <div className="mt-10 text-xl font-bold">
             Total: ₹{total}
           </div>
         )}
 
-        {/* Checkout Button */}
+        {/* CHECKOUT BUTTON */}
         {cart.length > 0 && !showCheckout && !orderPlaced && (
           <button
             onClick={() => setShowCheckout(true)}
@@ -111,7 +121,7 @@ export default function Cart() {
           </button>
         )}
 
-        {/* Checkout Form */}
+        {/* CHECKOUT FORM */}
         {showCheckout && !orderPlaced && (
           <div className="mt-8 bg-gray-100 p-6 rounded-xl max-w-md">
 
@@ -152,7 +162,7 @@ export default function Cart() {
           </div>
         )}
 
-        {/* Success Message */}
+        {/* SUCCESS */}
         {orderPlaced && (
           <div className="mt-8 p-6 bg-green-100 rounded-xl">
             <h2 className="text-xl font-bold text-green-700">

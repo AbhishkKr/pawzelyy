@@ -5,7 +5,7 @@ html {
 }
 
 /* ===============================
-   🐶 FLOATING DOG
+   FLOATING DOG
 ================================ */
 @keyframes float {
   0% { transform: translateY(0); }
@@ -19,7 +19,7 @@ html {
 }
 
 /* ===============================
-   🐾 PAW TRAIL
+   PAW TRAIL
 ================================ */
 .paw-trail {
   position: absolute;
@@ -42,7 +42,7 @@ html {
 }
 
 /* ===============================
-   🧼 SCROLLBAR HIDE
+   SCROLLBAR HIDE
 ================================ */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -54,7 +54,7 @@ html {
 }
 
 /* ===============================
-   🎠 CAROUSEL FADE EDGES
+    CAROUSEL FADE EDGES
 ================================ */
 .carousel-fade {
   position: relative;
@@ -82,7 +82,7 @@ html {
 }
 
 /* ===============================
-   ✨ BASIC FADE
+    BASIC FADE
 ================================ */
 @keyframes fadeIn {
   from {
@@ -100,7 +100,7 @@ html {
 }
 
 /* ===============================
-   🐾 AWWARDS LOADER ANIMATIONS
+    AWWARDS LOADER ANIMATIONS
 ================================ */
 
 /* Paw Entry */
@@ -143,7 +143,7 @@ html {
 }
 
 /* ===============================
-   📱 MOBILE OPTIMIZATION
+    MOBILE OPTIMIZATION
 ================================ */
 @media (max-width: 640px) {
 

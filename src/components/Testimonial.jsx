@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-// 🔥 Container (controls stagger)
+// Container (controls stagger)
 const container = {
   hidden: {},
   visible: {
@@ -13,7 +13,7 @@ const container = {
   },
 };
 
-// 🔥 Letter animation
+// Letter animation
 const letter = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -37,7 +37,7 @@ export default function Testimonial() {
         {/* LEFT SIDE TEXT */}
         <div className="text-center md:text-left">
 
-          {/* ⭐ Stars */}
+          {/* Stars */}
           <motion.div
             className="flex justify-center md:justify-start text-yellow-400 text-lg sm:text-xl md:text-2xl mb-4 md:mb-6"
             initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ export default function Testimonial() {
             ★ ★ ★ ★ ★
           </motion.div>
 
-          {/* 🔥 Quote (LETTER BY LETTER) */}
+          {/*  Quote (LETTER BY LETTER) */}
           <motion.p
             className="text-purple-800 text-base sm:text-lg md:text-xl leading-relaxed mb-6 md:mb-8 flex flex-wrap"
             variants={container}

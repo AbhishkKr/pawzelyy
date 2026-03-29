@@ -7,7 +7,7 @@ import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 🔥 Menu wrapper animation
+//  Menu wrapper animation
 const menuWrapper = {
   hidden: { y: "100%" },
   visible: {
@@ -19,7 +19,7 @@ const menuWrapper = {
   },
 };
 
-// 🔥 Stagger container
+//  Stagger container
 const container = {
   hidden: {},
   visible: {
@@ -30,7 +30,7 @@ const container = {
   },
 };
 
-// 🔥 Zig-Zag animation
+//  Zig-Zag animation
 const item = (i) => ({
   hidden: {
     y: i % 2 === 0 ? "-120%" : "120%",
@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 🔥 FLOATING NAVBAR (SLIM + WIDE) */}
+      {/* FLOATING NAVBAR (SLIM + WIDE) */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[98%] sm:w-[95%] md:w-[92%] lg:w-[88%]">
 
         <div className="flex items-center justify-between px-3 sm:px-5 md:px-6 py-2 sm:py-2.5
@@ -115,7 +115,7 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* 🔥 MORPHING HAMBURGER */}
+            {/*  MORPHING HAMBURGER */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`relative w-10 h-10 flex items-center justify-center transition-transform duration-500 ${
@@ -141,7 +141,7 @@ export default function Navbar() {
 
       </nav>
 
-      {/* 🔥 FULLSCREEN MENU (UNCHANGED) */}
+      {/* FULLSCREEN MENU (UNCHANGED) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

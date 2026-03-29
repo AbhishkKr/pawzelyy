@@ -5,7 +5,7 @@ export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  // ⏳ Wait until Firebase finishes checking auth
+  //  Wait until Firebase finishes checking auth
   if (loading) {
     return <div className="text-center mt-20">Loading...</div>;
   }

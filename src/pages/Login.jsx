@@ -24,7 +24,7 @@ export default function Login() {
   const location = useLocation();
   const provider = new GoogleAuthProvider();
 
-  // ✅ FIXED: Get previous page safely
+  //  FIXED: Get previous page safely
   const from = location.state?.from
     ? location.state.from.pathname + location.state.from.search
     : "/";
@@ -48,7 +48,7 @@ export default function Login() {
 
       const user = userCredential.user;
 
-      // ✅ Ensure user exists in Firestore
+      //  Ensure user exists in Firestore
       const userRef = doc(db, "users", user.uid);
       const userSnap = await getDoc(userRef);
 
@@ -59,7 +59,7 @@ export default function Login() {
         });
       }
 
-      // ✅ Success message + redirect
+      //  Success message + redirect
       setMessage("✅ You have successfully logged in");
 
       setTimeout(() => {
@@ -83,7 +83,7 @@ export default function Login() {
     }
   };
 
-  // 🔥 GOOGLE LOGIN
+  //  GOOGLE LOGIN
   const handleGoogleLogin = async () => {
     setLoading(true);
 
@@ -101,7 +101,7 @@ export default function Login() {
         });
       }
 
-      // ✅ Success message + redirect
+      //  Success message + redirect
       setMessage("✅ Logged in with Google");
 
       setTimeout(() => {
@@ -116,7 +116,7 @@ export default function Login() {
     }
   };
 
-  // 🔑 FORGOT PASSWORD
+  // FORGOT PASSWORD
   const handleForgotPassword = async () => {
     if (!email) {
       return alert("Enter your email first");
@@ -154,14 +154,14 @@ export default function Login() {
             Welcome Back
           </h1>
 
-          {/* 🔥 Redirect message */}
+          {/*  Redirect message */}
           {location.state?.from && (
             <p className="text-sm text-gray-500 mb-4">
               Please log in to continue
             </p>
           )}
 
-          {/* ✅ Success message */}
+          {/* Success message */}
           {message && (
             <div className="mb-4 text-green-600 text-sm font-medium bg-green-50 p-3 rounded-lg">
               {message}

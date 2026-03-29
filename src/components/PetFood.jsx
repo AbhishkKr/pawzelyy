@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// 🔥 Animation configs (FINAL - delayed + premium feel)
+// Animation configs (FINAL - delayed + premium feel)
 const container = {
   hidden: {},
   visible: {
     transition: {
       staggerChildren: 0.08,   // word gap
-      delayChildren: 0.6       // 👈 delay AFTER section comes into view
+      delayChildren: 0.6       //  delay AFTER section comes into view
     },
   },
 };
@@ -72,13 +72,13 @@ export default function PetFood() {
         <div className="flex flex-wrap justify-between items-start gap-4 mb-8 md:mb-12">
 
           <div>
-            {/* 🔥 Pet Care Products */}
+            {/* Pet Care Products */}
             <motion.p
               className="text-purple-600 text-sm flex flex-wrap gap-1"
               variants={container}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }} // 👈 trigger later (50% visible)
+              viewport={{ once: true, amount: 0.5 }} // trigger later (50% visible)
             >
               {"Pet Care Products".split(" ").map((w, i) => (
                 <motion.span key={i} variants={word}>
@@ -89,7 +89,7 @@ export default function PetFood() {
 
             <div className="w-10 h-1 bg-purple-600 mt-2 mb-4"></div>
 
-            {/* 🔥 Heading */}
+            {/* Heading */}
             <motion.h2
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 max-w-xs sm:max-w-sm md:max-w-xl flex flex-wrap gap-2"
               variants={container}
@@ -105,13 +105,13 @@ export default function PetFood() {
             </motion.h2>
           </div>
 
-          {/* 🔥 SEE MORE */}
+          {/* SEE MORE */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.6,
-              delay: 0.8, // 👈 appears after text
+              delay: 0.8, //  appears after text
               ease: [0.22, 1, 0.36, 1],
             }}
             viewport={{ once: true, amount: 0.5 }}

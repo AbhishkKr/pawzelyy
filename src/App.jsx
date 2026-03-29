@@ -47,7 +47,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
-  // 🔐 Auth Listener
+  //  Auth Listener
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log(user ? "Logged in" : "Logged out");
@@ -72,7 +72,7 @@ export default function App() {
     };
   }, []);
 
-  // 🟣 SHOW INTRO LOADER
+  //  SHOW INTRO LOADER
   if (loading) {
     return (
       <div
@@ -90,7 +90,7 @@ export default function App() {
       <ScrollToTop />
 
       <Routes>
-        {/* 🌐 PUBLIC ROUTES */}
+        {/*  PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/signup" element={<Signup />} />
@@ -120,7 +120,7 @@ export default function App() {
         <Route path="/pets" element={<AllPets />} />
         <Route path="/shop-products" element={<PetShop />} />
 
-        {/* 🔒 PROTECTED ROUTES */}
+        {/*  PROTECTED ROUTES */}
         <Route
           path="/cart"
           element={
@@ -139,7 +139,7 @@ export default function App() {
           }
         />
 
-        {/* 📄 OTHER */}
+        {/*  OTHER */}
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/orders" element={<Orders />} />
